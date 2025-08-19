@@ -11,6 +11,15 @@ class AppTest < Minitest::Test
     Sinatra::Application
   end
 
+  def setup
+    # Reset the users array to its initial state before each test
+    users.clear
+    users.replace([
+      { id: 1, name: 'John Doe', email: 'john@example.com' },
+      { id: 2, name: 'Jane Doe', email: 'jane@example.com' }
+    ])
+  end
+
   # Test for the GET /users route
   def test_get_users
     get '/users'
