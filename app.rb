@@ -1,9 +1,10 @@
+require 'sinatra'
+
 set :environment, :test
 set :raise_errors, true
 set :dump_errors, true
 set :show_exceptions, false
 
-require 'sinatra'
 require 'json'
 
 users = [
