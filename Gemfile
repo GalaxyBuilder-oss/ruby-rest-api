@@ -2,4 +2,8 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'json'
-gem 'rake'
+
+group :test do
+  gem 'rake'
+  gem 'minitest'
+end
