@@ -13,8 +13,8 @@ class AppTest < Minitest::Test
 
   def setup
     # Reset the users array to its initial state before each test
-    users.clear
-    users.replace([
+    $users.clear
+    $users.replace([
       { id: 1, name: 'John Doe', email: 'john@example.com' },
       { id: 2, name: 'Jane Doe', email: 'jane@example.com' }
     ])
@@ -25,8 +25,8 @@ class AppTest < Minitest::Test
     get '/users'
     assert last_response.ok?
     assert_equal 'application/json', last_response.content_type
-    users = JSON.parse(last_response.body)
-    assert_equal 2, users.size
+    $users = JSON.parse(last_response.body)
+    assert_equal 2, $users.size
   end
 
   # Test for the GET /users/:id route
