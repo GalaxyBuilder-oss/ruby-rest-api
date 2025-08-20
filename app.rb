@@ -30,7 +30,8 @@ end
 post '/users' do
   content_type :json
   new_user = JSON.parse(request.body.read)
-  new_user['id'] = users.size + 1
+  # Corrected line: Use the global variable $users
+  new_user['id'] = $users.size + 1
   $users << new_user
   new_user.to_json
 end
