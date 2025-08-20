@@ -6,7 +6,6 @@ require_relative '../app'
 class AppTest < Minitest::Test
   include Rack::Test::Methods
 
-  # This method tells Rack::Test which application to run
   def app
     Sinatra::Application
   end
@@ -25,8 +24,8 @@ class AppTest < Minitest::Test
     get '/users'
     assert last_response.ok?
     assert_equal 'application/json', last_response.content_type
-    $users = JSON.parse(last_response.body)
-    assert_equal 2, $users.size
+    users_from_response = JSON.parse(last_response.body)
+    assert_equal 2, users_from_response.size
   end
 
   # Test for the GET /users/:id route
